@@ -1,4 +1,5 @@
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 import os
@@ -11,12 +12,24 @@ def generate_launch_description():
         'task02.yaml'
     )
 
+    # Declare the 'text' argument, which will be passed as a parameter to the node
+    text_arg = DeclareLaunchArgument(
+        'text',
+        default_value='Hello, ROS2!',  # Default message if no argument is provided
+        description='Text to publish on the topic'
+    )
+
     return LaunchDescription([
+        # Declare the text argument
+        text_arg,
+
+        # Launch the publisher node with the text parameter and configuration file
         Node(
             package='task02',
             executable='publisher',
             name='publisher_node',
             output='screen',
-            parameters=[config_file_path]  # Load parameters from the YAML config file
-        )
+            parameters=[config_file_path,  # Load parameters from the YAML config file
+                        {'text': LaunchConfiguration('text')}],  # Pass the text as a parameter
+        ),
     ])
