@@ -1,16 +1,22 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+import os
 
 def generate_launch_description():
+    # Get the path to the config file in the share directory of the package
+    config_file_path = os.path.join(
+        get_package_share_directory('task02'),
+        'config',
+        'task02.yaml'
+    )
+
     return LaunchDescription([
         Node(
             package='task02',
             executable='publisher',
             name='publisher_node',
             output='screen',
-            parameters=[
-                ('text', 'Hello, ROS2!'),
-                'config/task02.yaml'
-            ]
+            parameters=[config_file_path]  # Load parameters from the YAML config file
         )
     ])
