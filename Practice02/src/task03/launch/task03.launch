@@ -1,0 +1,36 @@
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+    # Path to the config file
+    config_file_path = os.path.join(
+        get_package_share_directory('task03'),
+        'config',
+        'task03.yaml'
+    )
+
+    # Declare the 'service_name' argument for service name override
+    service_name_arg = DeclareLaunchArgument(
+        'service_name',
+        default_value='/trigger_service',
+        description='Name of the service provided by the node'
+    )
+
+    return LaunchDescription([
+        # Declare the service name argument
+        service_name_arg,
+
+        # Launch the trigger node
+        Node(
+            package='task03',
+            executable='trigger_node',
+            name='trigger_node',
+            output='screen',
+            parameters=[config_file_path,  # Load parameters from the config file
+                        {'service_name': LaunchConfiguration('service_name')}],  # Allow overriding service name
+        ),
+    ])
