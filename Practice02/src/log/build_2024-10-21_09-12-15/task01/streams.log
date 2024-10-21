@@ -1,0 +1,34 @@
+[0.718s] Invoking command in '/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/task01': PYTHONPATH=/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/task01 build --build-base /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build install --record /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/install.log --single-version-externally-managed install_data
+[0.988s] running egg_info
+[0.989s] creating ../build/task01/task01.egg-info
+[0.989s] writing ../build/task01/task01.egg-info/PKG-INFO
+[0.989s] writing dependency_links to ../build/task01/task01.egg-info/dependency_links.txt
+[0.989s] writing entry points to ../build/task01/task01.egg-info/entry_points.txt
+[0.990s] writing requirements to ../build/task01/task01.egg-info/requires.txt
+[0.990s] writing top-level names to ../build/task01/task01.egg-info/top_level.txt
+[0.990s] writing manifest file '../build/task01/task01.egg-info/SOURCES.txt'
+[0.991s] reading manifest file '../build/task01/task01.egg-info/SOURCES.txt'
+[0.993s] writing manifest file '../build/task01/task01.egg-info/SOURCES.txt'
+[0.993s] running build
+[0.993s] running build_py
+[0.993s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build
+[0.993s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib
+[0.994s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib/task01
+[0.994s] copying task01/receiver.py -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib/task01
+[0.994s] copying task01/__init__.py -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib/task01
+[0.994s] running install
+[0.994s] running install_lib
+[0.995s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages/task01
+[0.995s] copying /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib/task01/receiver.py -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages/task01
+[0.996s] copying /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build/lib/task01/__init__.py -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages/task01
+[0.996s] byte-compiling /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages/task01/receiver.py to receiver.cpython-310.pyc
+[0.997s] byte-compiling /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages/task01/__init__.py to __init__.cpython-310.pyc
+[0.997s] running install_data
+[0.997s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/ament_index
+[0.998s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/ament_index/resource_index
+[0.998s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/ament_index/resource_index/packages
+[0.998s] copying resource/task01 -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/ament_index/resource_index/packages
+[0.998s] copying package.xml -> /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/task01
+[0.999s] creating /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/share/task01/launch
+[0.999s] error: can't copy 'launch/task01.launch.py': doesn't exist or not a regular file
+[1.029s] Invoked command in '/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/task01' returned '1': PYTHONPATH=/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/install/task01/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/task01 build --build-base /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/build install --record /workspace/robotics_course/ros2-DarkMechanikum/Practice02/src/build/task01/install.log --single-version-externally-managed install_data
