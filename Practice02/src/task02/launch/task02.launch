@@ -1,0 +1,16 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='task02',
+            executable='publisher',
+            name='publisher_node',
+            output='screen',
+            parameters=[
+                ('text', 'Hello, ROS2!'),
+                'config/task02.yaml'
+            ]
+        )
+    ])
