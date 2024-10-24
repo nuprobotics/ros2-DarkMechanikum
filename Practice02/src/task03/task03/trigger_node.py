@@ -26,12 +26,13 @@ class TriggerNode(Node):
         # Create the service that responds with the stored string
         self.service = self.create_service(Trigger, self.service_name, self.handle_service_request)
 
-        # Set up a timer to call the /spgc/trigger service every second
-        self.timer = self.create_timer(1.0, self.call_trigger_service)
+        # Call the /spgc/trigger service once at startup
+        self.get_logger().info(f'Calling service /spgc/trigger once...')
+        self.call_trigger_service()
 
     def call_trigger_service(self):
-        if self.client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Calling /spgc/trigger service...')
+        if self.client.wait_for_service(timeout_sec=5.0):
+            self.get_logger().info('/spgc/trigger service is available. Calling...')
             request = Trigger.Request()
 
             # Send request to /spgc/trigger service
