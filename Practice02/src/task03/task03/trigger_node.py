@@ -26,34 +26,33 @@ class TriggerNode(Node):
         # Create the service that responds with the stored string
         self.service = self.create_service(Trigger, self.service_name, self.handle_service_request)
 
-        # Try to call the /spgc/trigger service
-        self.get_logger().info(f'Calling service /spgc/trigger...')
-        self.call_trigger_service()
+        # Set up a timer to call the /spgc/trigger service every second
+        self.timer = self.create_timer(1.0, self.call_trigger_service)
 
     def call_trigger_service(self):
-        if self.client.wait_for_service(timeout_sec=5.0):
-            self.get_logger().info('/spgc/trigger service is available. Calling...')
+        if self.client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Calling /spgc/trigger service...')
             request = Trigger.Request()
 
             # Send request to /spgc/trigger service
             future = self.client.call_async(request)
             future.add_done_callback(self.handle_trigger_response)
         else:
-            self.get_logger().warning('Service /spgc/trigger is unavailable. Using default string.')
+            self.get_logger().warning('/spgc/trigger service is unavailable. Using default string.')
 
     def handle_trigger_response(self, future):
         try:
             response = future.result()
             if response.success:
                 self.stored_string = response.message
-                self.get_logger().info(f'Successfully called /spgc/trigger: {response.message}')
+                self.get_logger().info(f'Received response from /spgc/trigger: {response.message}')
             else:
-                self.get_logger().warning('Service call failed. Using default string.')
+                self.get_logger().warning('Service call to /spgc/trigger failed. Using last valid or default value.')
         except Exception as e:
-            self.get_logger().error(f'Service call failed: {traceback.format_exc()}. Using default string.')
+            self.get_logger().error(f'Error during service call: {traceback.format_exc()}. Using last valid or default value.')
 
     def handle_service_request(self, request, response):
-        # Respond with the stored string value
+        # Respond with the stored string value (last received or default)
         response.success = True
         response.message = self.stored_string
         self.get_logger().info(f'Responding to service call with: {response.message}')
