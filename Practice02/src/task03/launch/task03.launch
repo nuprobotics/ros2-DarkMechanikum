@@ -13,13 +13,6 @@ def generate_launch_description():
         'task03.yaml'
     )
 
-    # Declare the 'service_name' argument for service name override
-    service_name_arg = DeclareLaunchArgument(
-        'service_name',
-        default_value='/trigger_service',
-        description='Name of the service provided by the node'
-    )
-
     return LaunchDescription([
         # Declare the service name argument
         service_name_arg,
